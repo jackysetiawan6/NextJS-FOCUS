@@ -1,0 +1,131 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%; /* Very light grey-blue */
+    --foreground: 215 25% 25%; /* Dark slate blue text */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 215 25% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 25%;
+    --primary: 155 60% 40%; /* Deep Emerald Green */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --secondary: 210 35% 50%; /* Muted Slate Blue */
+    --secondary-foreground: 0 0% 100%; /* White text on secondary */
+    --muted: 210 20% 94%; /* Lighter grey-blue */
+    --muted-foreground: 210 10% 45%; /* Medium grey text */
+    --accent: 35 90% 60%; /* Warm Gold/Amber */
+    --accent-foreground: 35 25% 15%; /* Dark text on accent */
+    --destructive: 0 75% 55%; /* Clear Red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 88%; /* Light grey-blue border */
+    --input: 210 20% 88%;
+    --ring: 155 60% 50%; /* Slightly lighter primary for focus rings */
+    
+    --chart-1: 155 60% 40%; /* primary */
+    --chart-2: 210 35% 50%; /* secondary */
+    --chart-3: 35 90% 60%; /* accent */
+    --chart-4: 270 70% 60%; /* A distinct purple */
+    --chart-5: 0 0% 50%; /* A neutral grey */
+    
+    --radius: 0.5rem; /* Softer, more modern feel */
+
+    /* Sidebar specific colors for light theme */
+    --sidebar-background: 0 0% 100%; /* White for more distinction */
+    --sidebar-foreground: 215 25% 25%; /* Dark slate blue text */
+    --sidebar-primary: 155 60% 40%; /* var(--primary) */
+    --sidebar-primary-foreground: 0 0% 100%; /* var(--primary-foreground) */
+    --sidebar-accent: 210 80% 95%; /* Very light blue for active/hover item bg */
+    --sidebar-accent-foreground: 155 60% 40%; /* Primary color for active/hover item text */
+    --sidebar-border: 210 20% 90%; /* Slightly lighter border for white sidebar */
+    --sidebar-ring: 155 60% 50%; /* var(--ring) */
+
+    /* Native Scrollbar Colors - Light Theme */
+    --scrollbar-thumb: hsl(210 10% 45% / 0.5); /* muted-foreground with opacity */
+    --scrollbar-thumb-hover: hsl(210 10% 45% / 0.7);
+    --scrollbar-track: hsl(210 20% 98% / 0.05); /* background with very low opacity or almost transparent */
+  }
+
+  .dark {
+    --background: 215 30% 12%; /* Very dark slate blue */
+    --foreground: 210 20% 90%; /* Light grey-blue text */
+    --card: 215 30% 17%; /* Darker slate blue for cards */
+    --card-foreground: 210 20% 90%;
+    --popover: 215 30% 15%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 155 65% 58%; /* Brighter Emerald Green for dark mode */
+    --primary-foreground: 155 25% 10%; /* Dark text on primary */
+    --secondary: 210 40% 65%; /* Lighter Slate Blue */
+    --secondary-foreground: 210 15% 15%; /* Dark text on secondary */
+    --muted: 215 20% 25%; /* Medium-dark slate */
+    --muted-foreground: 210 15% 60%;
+    --accent: 35 95% 68%; /* Brighter Gold/Amber */
+    --accent-foreground: 35 20% 10%; /* Dark text on accent */
+    --destructive: 0 80% 60%; /* Slightly lighter red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 15% 30%; /* Dark grey-blue border */
+    --input: 210 15% 28%;
+    --ring: 155 65% 65%;
+    
+    --chart-1: 155 65% 58%;
+    --chart-2: 210 40% 65%;
+    --chart-3: 35 95% 68%;
+    --chart-4: 270 80% 70%;
+    --chart-5: 0 0% 70%;
+
+    /* Sidebar specific colors for dark theme */
+    --sidebar-background: 215 28% 9%; /* Slightly darker & less saturated for distinction */
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 155 65% 58%; /* var(--primary) */
+    --sidebar-primary-foreground: 155 25% 10%; /* var(--primary-foreground) */
+    --sidebar-accent: 215 30% 20%; /* Subtle dark slate/blue for active/hover item bg */
+    --sidebar-accent-foreground: 155 65% 58%; /* Primary color for active/hover item text */
+    --sidebar-border: 210 15% 22%; /* Slightly darker border for dark sidebar */
+    --sidebar-ring: 155 65% 65%;
+
+    /* Native Scrollbar Colors - Dark Theme */
+    --scrollbar-thumb: hsl(210 15% 60% / 0.5); /* muted-foreground with opacity */
+    --scrollbar-thumb-hover: hsl(210 15% 60% / 0.7);
+    --scrollbar-track: hsl(215 30% 12% / 0.05); /* background with very low opacity or almost transparent */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* General scrollbar styling for WebKit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;  /* Width of vertical scrollbar */
+    height: 8px; /* Height of horizontal scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid transparent; /* Creates padding around thumb */
+    background-clip: content-box; /* Ensures border doesn't overlap thumb color */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  /* Firefox scrollbar styling */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}

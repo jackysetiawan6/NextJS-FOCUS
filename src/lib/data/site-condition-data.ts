@@ -1,0 +1,277 @@
+
+import type { AlarmEntry, AlarmClass, AlarmSystemStatus, FireSystemIsolationEntry, FireSystemIsolationStatus, ManualOperationEntry, ManualOperationStatus, LotoTagEntry, LotoTagStatus } from "@/types";
+import { addDays } from 'date-fns';
+
+// Alarm Logs Data
+export const alarmClassOptions: AlarmClass[] = ["Critical", "Major", "Minor", "Warning", "Information"];
+export const alarmStatusOptions: AlarmSystemStatus[] = ["Active", "Acknowledged", "Resolved", "Closed"];
+
+export const initialAlarmEntries: AlarmEntry[] = [
+  {
+    id: "alarm-001",
+    occurredTimestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: new Date(Date.now() - 1.5 * 60 * 60 * 1000).toISOString(),
+    resolvedTimestamp: null,
+    alarmDescription: "High Temperature Alert - Server Rack C-07",
+    actionTaken: "Dispatched technician to investigate. Found faulty fan. Fan replaced.",
+    remarks: "Temperature now stable. Monitoring performance.",
+    responsible: "Marcus Thorne / On-call Team",
+    floorLevel: "Data Hall C, Row 07",
+    incidentId: "INC-2024-034",
+    alarmClass: "Critical",
+    status: "Acknowledged",
+  },
+  {
+    id: "alarm-002",
+    occurredTimestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: new Date(Date.now() - 4.8 * 60 * 60 * 1000).toISOString(),
+    resolvedTimestamp: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+    alarmDescription: "UPS B-02 Input Voltage Fluctuation",
+    actionTaken: "Monitored voltage. Stabilized after utility power adjustment in the area. No further action required from site.",
+    responsible: "Eleanor Vance",
+    floorLevel: "Power Room B",
+    alarmClass: "Warning",
+    status: "Resolved",
+  },
+  {
+    id: "alarm-003",
+    occurredTimestamp: new Date(Date.now() - 0.5 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: null,
+    resolvedTimestamp: null,
+    alarmDescription: "Unauthorized Access Attempt - Loading Dock Door",
+    actionTaken: "Security patrol dispatched. No breach confirmed. Logged attempt from unidentified badge.",
+    remarks: "Badge ID xxxx-xxxx. Advised security HQ.",
+    responsible: "Security Team",
+    floorLevel: "Ground Floor - Loading Dock",
+    incidentId: "SEC-2024-015",
+    alarmClass: "Major",
+    status: "Active",
+  },
+    {
+    id: "alarm-004",
+    occurredTimestamp: new Date(Date.now() - 28 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: new Date(Date.now() - 27 * 60 * 60 * 1000).toISOString(),
+    resolvedTimestamp: new Date(Date.now() - 26 * 60 * 60 * 1000).toISOString(),
+    alarmDescription: "Network Packet Loss - Core Switch A",
+    actionTaken: "Identified faulty SFP module. Replaced module. Network performance restored.",
+    remarks: "Monitoring ongoing.",
+    responsible: "Network Team",
+    floorLevel: "Network Core Room A",
+    alarmClass: "Major",
+    status: "Closed",
+  },
+  {
+    id: "alarm-005",
+    occurredTimestamp: new Date(Date.now() - 0.2 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: null,
+    resolvedTimestamp: null,
+    alarmDescription: "Cooling Unit C3 - Low Coolant Warning",
+    actionTaken: "Technician investigating. Preliminary check shows possible leak.",
+    responsible: "Olivia Chen",
+    floorLevel: "Data Hall C, Row 3",
+    alarmClass: "Minor",
+    status: "Active",
+  },
+  {
+    id: "alarm-006",
+    occurredTimestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000 + 30 * 60 * 1000).toISOString(),
+    resolvedTimestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000 + 2 * 60 * 60 * 1000).toISOString(),
+    alarmDescription: "Backup Generator Test - Scheduled Maintenance Information",
+    actionTaken: "Test cycle initiated as per schedule. All parameters nominal.",
+    remarks: "Test completed successfully.",
+    responsible: "Maintenance Team",
+    floorLevel: "Generator Yard",
+    alarmClass: "Information",
+    status: "Closed",
+  },
+  {
+    id: "alarm-007",
+    occurredTimestamp: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: new Date(Date.now() - 0.8 * 60 * 60 * 1000).toISOString(),
+    resolvedTimestamp: null,
+    alarmDescription: "Fire Alarm Panel - Zone D - Fault",
+    actionTaken: "Investigating panel fault code F-078. No signs of fire. Possible sensor error.",
+    responsible: "Safety Officer",
+    floorLevel: "Data Hall D",
+    alarmClass: "Critical",
+    status: "Acknowledged",
+  },
+  {
+    id: "alarm-008",
+    occurredTimestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: null,
+    resolvedTimestamp: null,
+    alarmDescription: "Server SVR-AD-01 Unresponsive",
+    actionTaken: "Attempting remote reboot. If fails, physical check required.",
+    responsible: "Kenji Tanaka",
+    floorLevel: "Server Room A",
+    alarmClass: "Major",
+    status: "Active",
+  },
+  {
+    id: "alarm-009",
+    occurredTimestamp: new Date(Date.now() - 50 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: new Date(Date.now() - 49 * 60 * 60 * 1000).toISOString(),
+    resolvedTimestamp: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+    alarmDescription: "Water Leak Detected - Underfloor Sector B2",
+    actionTaken: "Sensor activated. Water flow stopped. Area cleaned and dried. Sensor reset.",
+    remarks: "Source was a loose fitting on chiller pipe. Repaired.",
+    responsible: "Facility Team",
+    floorLevel: "Data Hall B, Sector 2",
+    alarmClass: "Critical",
+    status: "Closed",
+  },
+  {
+    id: "alarm-010",
+    occurredTimestamp: new Date(Date.now() - 0.1 * 60 * 60 * 1000).toISOString(),
+    acknowledgedTimestamp: null,
+    resolvedTimestamp: null,
+    alarmDescription: "Printer PRN-Admin-03 Offline",
+    actionTaken: "User reported. Checking network connectivity.",
+    responsible: "IT Support",
+    floorLevel: "Admin Office",
+    alarmClass: "Information",
+    status: "Active",
+  }
+];
+
+export const defaultAlarmFormData: Omit<AlarmEntry, 'id' | 'status'> = {
+  occurredTimestamp: new Date().toISOString(),
+  acknowledgedTimestamp: null,
+  resolvedTimestamp: null,
+  alarmDescription: "",
+  actionTaken: "",
+  remarks: "",
+  responsible: "",
+  floorLevel: "",
+  incidentId: null,
+  alarmClass: "Information",
+};
+
+// Fire System Isolation Data
+export const fireIsolationStatusOptions: FireSystemIsolationStatus[] = ["Active", "Pending Removal", "Extended", "Removed"];
+export const initialFireSystemIsolations: FireSystemIsolationEntry[] = [
+  {
+    id: "fsi-001",
+    unitOrSystem: "Sprinkler Zone DH-A3",
+    areaImpacted: "Data Hall A, Racks 10-15",
+    isolatedBy: "John Smith (Maintenance)",
+    reasonForIsolation: "Scheduled sprinkler head replacement",
+    lotoTagNumber: "LOTO-FS-1023",
+    isolationStartTime: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+    expectedRemovalTime: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
+    status: "Active",
+    notes: "Work progressing as scheduled. Section A-3 is offline.",
+  },
+  {
+    id: "fsi-002",
+    unitOrSystem: "Main Fire Alarm Panel - South Wing",
+    areaImpacted: "South Wing Offices & Labs",
+    isolatedBy: "Security Control",
+    reasonForIsolation: "Panel software update, potential for false alarms during update.",
+    lotoTagNumber: "LOTO-FS-1024",
+    isolationStartTime: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
+    expectedRemovalTime: new Date(Date.now() + 1 * 60 * 60 * 1000).toISOString(),
+    status: "Active",
+    notes: "Technician on site performing update. Manual fire watch protocols initiated for South Wing.",
+  },
+   {
+    id: "fsi-003",
+    unitOrSystem: "VESDA System - Server Room B",
+    areaImpacted: "Server Room B Only",
+    isolatedBy: "Eleanor Vance",
+    reasonForIsolation: "Testing of new server rack installation, potential dust generation.",
+    isolationStartTime: new Date(Date.now() - 26 * 60 * 60 * 1000).toISOString(),
+    expectedRemovalTime: new Date(Date.now() - 22 * 60 * 60 * 1000).toISOString(),
+    actualRemovalTime: new Date(Date.now() - 21 * 60 * 60 * 1000).toISOString(),
+    status: "Removed",
+    notes: "Testing completed. System back online. No issues.",
+  },
+];
+export const defaultFireIsolationFormData: Omit<FireSystemIsolationEntry, 'id' | 'status'> = {
+  unitOrSystem: "",
+  areaImpacted: "",
+  isolatedBy: "",
+  reasonForIsolation: "",
+  lotoTagNumber: "",
+  isolationStartTime: new Date().toISOString(),
+  expectedRemovalTime: addDays(new Date(), 1).toISOString(),
+  actualRemovalTime: null,
+  notes: "",
+};
+
+// Manual Operation Data
+export const manualOperationStatusOptions: ManualOperationStatus[] = ['Active', 'Completed', 'Reverted'];
+export const initialManualOperations: ManualOperationEntry[] = [
+  {
+    id: "mo-001",
+    systemOperated: "Chiller Unit CH-02",
+    operationPerformed: "Manual Override to Full Capacity",
+    reasonForManualOp: "Sudden temperature spike in Data Hall B; BMS auto-response insufficient.",
+    operator: "Olivia Chen",
+    operationTimestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+    status: "Active",
+    notes: "Monitoring temperature closely. Expect to revert to auto once stable.",
+  },
+   {
+    id: "mo-002",
+    systemOperated: "Generator G1 Fuel Pump",
+    operationPerformed: "Manual Test Cycle Run",
+    reasonForManualOp: "Monthly preventive maintenance check.",
+    operator: "David Rodriguez",
+    operationTimestamp: new Date(Date.now() - 28 * 60 * 60 * 1000).toISOString(),
+    status: "Completed",
+    notes: "Pump operated nominally for 30 minutes. All parameters green.",
+  },
+];
+export const defaultManualOperationFormData: Omit<ManualOperationEntry, 'id'> = {
+  systemOperated: "",
+  operationPerformed: "",
+  reasonForManualOp: "",
+  operator: "",
+  operationTimestamp: new Date().toISOString(),
+  status: "Active",
+  notes: "",
+};
+
+// LOTO Tag Data
+export const lotoTagStatusOptions: LotoTagStatus[] = ['Active', 'Removed'];
+export const initialLotoTags: LotoTagEntry[] = [
+  {
+    id: "loto-001",
+    equipmentIsolated: "PDU-DHB-R12-01",
+    tagNumber: "LOTO-ELEC-2024-056",
+    appliedBy: "Marcus Thorne",
+    appliedTimestamp: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+    expectedRemovalTimestamp: new Date(Date.now() + 3 * 60 * 60 * 1000).toISOString(),
+    reasonForLoto: "Circuit breaker replacement.",
+    status: "Active",
+    notes: "Vendor on site for replacement. PDU is de-energized.",
+  },
+  {
+    id: "loto-002",
+    equipmentIsolated: "HVAC Unit A3 Coolant Valve",
+    tagNumber: "LOTO-MECH-2024-012",
+    appliedBy: "CoolTech Services (John Doe)",
+    appliedTimestamp: new Date(Date.now() - 30 * 60 * 60 * 1000).toISOString(),
+    expectedRemovalTimestamp: new Date(Date.now() - 28 * 60 * 60 * 1000).toISOString(),
+    actualRemovalTimestamp: new Date(Date.now() - 27.5 * 60 * 60 * 1000).toISOString(),
+    reasonForLoto: "Coolant leak repair.",
+    status: "Removed",
+    notes: "System back online after repair and testing. Valve replaced.",
+  },
+];
+export const defaultLotoTagFormData: Omit<LotoTagEntry, 'id'> = {
+  equipmentIsolated: "",
+  tagNumber: "",
+  appliedBy: "",
+  appliedTimestamp: new Date().toISOString(),
+  expectedRemovalTimestamp: addDays(new Date(), 1).toISOString(),
+  actualRemovalTimestamp: null,
+  reasonForLoto: "",
+  status: "Active",
+  notes: "",
+};
+
+    
