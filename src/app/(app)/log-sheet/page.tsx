@@ -5,7 +5,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label"; // Added this import
+import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -103,7 +103,7 @@ export default function LogSheetPage() {
       ],
       unitOfMeasurement: commonUnitOfMeasurement,
     };
-  }, [logEntries, selectedChartUnitType, allUnits]);
+  }, [logEntries, selectedChartUnitType]);
 
 
   // Filtered logs for the TABLE
@@ -264,4 +264,3 @@ export default function LogSheetPage() {
     </div>
   );
 }
-

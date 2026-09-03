@@ -88,8 +88,8 @@ const shiftSelectOptions: { value: ShiftCode | typeof CLEAR_SHIFT_VALUE, label: 
 
 export default function RosterManagementPage() {
   const { toast } = useToast();
-  const [selectedYear, setSelectedYear] = useState<number>(2026);
-  const [selectedMonth, setSelectedMonth] = useState<number>(5);
+  const [selectedYear, setSelectedYear] = useState<number>(() => new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState<number>(() => new Date().getMonth());
   const [employees, setEmployees] = useState<RosterEmployee[]>(initialEmployees);
   const [fullRoster, setFullRoster] = useState<FullRosterData>(initialFullRosterData);
 
@@ -99,7 +99,7 @@ export default function RosterManagementPage() {
   const [isRemoveEmployeeDialogOpen, setIsRemoveEmployeeDialogOpen] = useState(false);
   const [employeeToRemove, setEmployeeToRemove] = useState<RosterEmployee | null>(null);
   
-  const [todayDate, setTodayDate] = useState<Date>(() => new Date("2026-06-11T00:00:00Z")); // For highlighting today's column
+  const [todayDate, setTodayDate] = useState<Date>(() => new Date(0));
 
   useEffect(() => {
     const now = new Date();
@@ -386,4 +386,3 @@ export default function RosterManagementPage() {
     </div>
   );
 }
-

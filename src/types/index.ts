@@ -174,7 +174,7 @@ export interface AlarmEntry {
   id: string;
   occurredTimestamp: string; // ISO string or formatted date string
   acknowledgedTimestamp?: string | null;
-  resolvedTimestamp?: string | null; // Changed from recoveredTimestamp
+  resolvedTimestamp?: string | null;
   alarmDescription: string;
   actionTaken: string;
   remarks?: string;
@@ -315,4 +315,3 @@ export interface ElectricalUnitLogEntry {
   notes?: string;
   operator?: string;
 }
-

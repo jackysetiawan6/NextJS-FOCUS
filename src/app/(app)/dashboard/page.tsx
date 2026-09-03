@@ -100,6 +100,10 @@ const incidentStatusToBadgeVariant = (status: IncidentStatusType): "default" | "
   }
 };
 
+const IN_PROGRESS_INCIDENT_STATUSES: IncidentStatusType[] = [
+  "Active", "Waiting for Maintenance", "Waiting for Spare Part", "Waiting for Resolution"
+];
+
 const incidentUrgencyToBadgeVariant = (urgency: IncidentReport['urgency']): "default" | "secondary" | "destructive" | "outline" => {
   switch (urgency) {
     case 'Critical': return 'destructive';
@@ -111,12 +115,12 @@ const incidentUrgencyToBadgeVariant = (urgency: IncidentReport['urgency']): "def
 };
 
 export default function DashboardPage() {
-  const [displayedMonth, setDisplayedMonth] = useState<Date>(() => new Date("2026-06-11T00:00:00Z"));
+  const [displayedMonth, setDisplayedMonth] = useState<Date>(() => new Date(0));
   const [powerData, setPowerData] = useState<DailyPowerData[]>([]);
   const [waterDetailsData, setWaterDetailsData] = useState<DailyWaterDetails[]>([]);
   const [rosterEmployeesData, setRosterEmployeesData] = useState<RosterEmployee[]>(initialRosterEmployees);
   const [fullRosterSchedule, setFullRosterSchedule] = useState<FullRosterData>(initialFullRosterData);
-  const [todayForData, setTodayForData] = useState(() => new Date("2026-06-11T00:00:00Z"));
+  const [todayForData, setTodayForData] = useState(() => new Date(0));
 
   const [selectedCalendarDate, setSelectedCalendarDate] = useState<Date | undefined>(undefined);
   const [isCalendarActivityDialogOpen, setIsCalendarActivityDialogOpen] = useState(false);
@@ -129,12 +133,8 @@ export default function DashboardPage() {
 
   const [abnormalPowerUnits, setAbnormalPowerUnits] = useState<ElectricalUnitDailyData[]>([]);
 
-  const inProgressIncidentStatuses: IncidentStatusType[] = [
-    "Active", "Waiting for Maintenance", "Waiting for Spare Part", "Waiting for Resolution"
-  ];
-
   const inProgressIncidents = useMemo(() => {
-    return initialIncidents.filter(incident => inProgressIncidentStatuses.includes(incident.status));
+    return initialIncidents.filter(incident => IN_PROGRESS_INCIDENT_STATUSES.includes(incident.status));
   }, []);
 
   useEffect(() => {

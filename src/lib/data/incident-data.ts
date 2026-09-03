@@ -3,12 +3,12 @@ import type { IncidentReport } from "@/types";
 
 export const initialIncidents: IncidentReport[] = [
   {
-    id: Date.now().toString().slice(-10) + "1", // Example: "1614011811"
+    id: Date.now().toString().slice(-10) + "1",
     title: "Network Outage - Sector B",
     description: "Complete loss of network connectivity in server racks B1-B10.",
     reportedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000).toISOString(), // 5 days and 3 hours ago
     status: "Active",
-    assignedTo: "Marcus Thorne",
+    assignedTo: "Alex Morgan",
     progressUpdates: [
         { text: "Initial assessment of Sector B network infrastructure started.", timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 - 2 * 60 * 60 * 1000).toISOString()}, // 5d 2h ago
         { text: "Power cycling core switch B-Core-1.", timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 - 1 * 60 * 60 * 1000).toISOString()}, // 5d 1h ago
@@ -22,12 +22,12 @@ export const initialIncidents: IncidentReport[] = [
     lastUpdatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000 - 8 * 60 * 60 * 1000).toISOString(),
   },
   {
-    id: Date.now().toString().slice(-10) + "2", // Example: "1643359422"
+    id: Date.now().toString().slice(-10) + "2",
     title: "HVAC Unit A3 Overheating",
     description: "HVAC unit in Zone A, row 3 is reporting high temperature alarms and emitting unusual noises.",
     reportedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000 - 5 * 60 * 60 * 1000).toISOString(), // 4 days 5 hours ago
     status: "Waiting for Spare Part",
-    assignedTo: "Olivia Chen",
+    assignedTo: "Jordan Lee",
     progressUpdates: [
         { text: "Technician dispatched. Initial check confirms high temperature.", timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000 - 4 * 60 * 60 * 1000).toISOString()}, // 4d 4h ago
         { text: "Unusual fan noise identified. Coolant levels appear low.", timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000).toISOString()}, // 4d 3h ago
@@ -39,12 +39,12 @@ export const initialIncidents: IncidentReport[] = [
     lastUpdatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000 - 6 * 60 * 60 * 1000).toISOString(),
   },
   {
-    id: Date.now().toString().slice(-10) + "3", // Example: "1614011833"
+    id: Date.now().toString().slice(-10) + "3",
     title: "Unauthorized Access Attempt - Main Entrance",
     description: "Security system logged multiple failed badge swipes at main entrance (Turnstile 2).",
     reportedAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000 - 1 * 60 * 60 * 1000).toISOString(), // 6 days 1 hour ago
     status: "Closed",
-    assignedTo: "Isabelle Moreau",
+    assignedTo: "Taylor Reed",
     progressUpdates: [
         { text: "Alert received from access control system.", timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString()}, // 6d ago
         { text: "Security team reviewing CCTV footage for Turnstile 2 around the time of alerts.", timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 - 23 * 60 * 60 * 1000).toISOString()}, // 5d 23h ago
@@ -55,7 +55,7 @@ export const initialIncidents: IncidentReport[] = [
     lastUpdatedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 - 18 * 60 * 60 * 1000).toISOString(),
   },
   {
-    id: Date.now().toString().slice(-10) + "4", // Example: "1643359444"
+    id: Date.now().toString().slice(-10) + "4",
     title: "Backup Generator G2 Failure to Start",
     description: "Generator G2 failed to start during weekly automated test sequence. Error code: E-042 (Fuel System).",
     reportedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000 - 2 * 60 * 60 * 1000).toISOString(), // 3 days 2 hours ago
@@ -64,14 +64,14 @@ export const initialIncidents: IncidentReport[] = [
     progressUpdates: [
         { text: "Automated test failed for G2. Maintenance team alerted.", timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000 - 1 * 60 * 60 * 1000).toISOString()}, // 3d 1h ago
         { text: "Initial diagnostics run by on-site technician. Fuel line appears clear.", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 - 23 * 60 * 60 * 1000).toISOString()}, // 2d 23h ago
-        { text: "Suspecting starter motor or fuel injector issue. Advanced diagnostics scheduled.", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 - 20 * 60 * 60 * 1000).toISOString()}, // 2d 20h ago
+        { text: "Suspecting starter motor or fuel injector issue. Advanced diagnostics scheduled.", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 - 20 * 60 * 60 * 1000).toISOString()},
         { text: "Vendor (GenSupport Inc.) contacted for specialized repair. ETA 4 hours.", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000 - 10 * 60 * 60 * 1000).toISOString()} // 1d 10h ago
     ],
     urgency: "Critical",
     lastUpdatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000 - 10 * 60 * 60 * 1000).toISOString(),
   },
   {
-    id: Date.now().toString().slice(-10) + "5", // Example: "1614011855"
+    id: Date.now().toString().slice(-10) + "5",
     title: "Minor Water Leak - Restroom 3B",
     description: "Small puddle found near sink in restroom 3B, adjacent to Data Hall C wall. Source unclear.",
     reportedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 - 30 * 60 * 1000).toISOString(), // 2 days 30 mins ago

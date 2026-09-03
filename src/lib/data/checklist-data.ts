@@ -62,7 +62,7 @@ export const initialPersonnelActivities: DailyPersonnelActivities[] = [
     shift: "Morning",
     activitiesByPersonnel: [
       { 
-        personnelName: "Alice Wonderland", 
+        personnelName: "Jamie Carter",
         activities: [
           { text: "Checked server room temperatures", status: "Completed" },
           { text: "Responded to 3 support tickets", status: "Completed" },
@@ -70,7 +70,7 @@ export const initialPersonnelActivities: DailyPersonnelActivities[] = [
         ] 
       },
       { 
-        personnelName: "Bob The Builder", 
+        personnelName: "Devon Kim",
         activities: [
           { text: "Escorted HVAC vendor for Unit B2 maintenance", status: "Completed" },
           { text: "Replaced faulty PSU in server SVR-07B", status: "Completed" },
@@ -83,7 +83,7 @@ export const initialPersonnelActivities: DailyPersonnelActivities[] = [
     shift: "Afternoon",
     activitiesByPersonnel: [
       { 
-        personnelName: "Charlie Brown", 
+        personnelName: "Robin Hayes",
         activities: [
           { text: "Monitored power consumption trends", status: "Completed" },
           { text: "Investigated minor alert on UPS-C1 (false positive)", status: "Completed" },
@@ -91,7 +91,7 @@ export const initialPersonnelActivities: DailyPersonnelActivities[] = [
         ] 
       },
       { 
-        personnelName: "Diana Prince", 
+        personnelName: "Cameron Blake",
         activities: [
           { text: "Conducted security patrol of all data halls", status: "In Progress" },
           { text: "Reviewed access logs for anomalies", status: "Pending" },
@@ -104,7 +104,7 @@ export const initialPersonnelActivities: DailyPersonnelActivities[] = [
     shift: "Night",
     activitiesByPersonnel: [
       { 
-        personnelName: "Edward Scissorhands", 
+        personnelName: "Leslie Park",
         activities: [
           { text: "Oversaw automated patch deployment cycle", status: "Completed" },
           { text: "Performed routine check on fire suppression system status", status: "Completed" },
@@ -112,7 +112,7 @@ export const initialPersonnelActivities: DailyPersonnelActivities[] = [
         ] 
       },
       { 
-        personnelName: "Eleanor Vance", 
+        personnelName: "Quinn Foster",
         activities: [
           { text: "Managed overnight network monitoring alerts", status: "Completed" },
           { text: "Troubleshot intermittent connectivity for dev servers (resolved)", status: "Completed" },

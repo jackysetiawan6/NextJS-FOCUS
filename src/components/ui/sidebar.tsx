@@ -709,8 +709,8 @@ const SidebarMenuSubItem = React.forwardRef<
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
 
 const SidebarMenuSubButton = React.forwardRef<
-  HTMLDivElement, // Changed from HTMLAnchorElement
-  React.HTMLAttributes<HTMLDivElement> & { // Changed from React.AnchorHTMLAttributes
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
     // No asChild prop here; it will always render a div.
     // No href prop here; it's handled by the parent Link.
     size?: "sm" | "md";
@@ -719,7 +719,7 @@ const SidebarMenuSubButton = React.forwardRef<
 >(({ size = "md", isActive, className, children, ...props }, ref) => {
   // Always renders a 'div'. The parent <Link> (without asChild) will wrap this with an <a>.
   return (
-    <div // Changed from <Comp> or <a> to <div>
+    <div
       ref={ref}
       data-sidebar="menu-sub-button"
       data-size={size}

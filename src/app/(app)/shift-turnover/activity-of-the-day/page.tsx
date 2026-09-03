@@ -47,7 +47,7 @@ export default function ActivityOfTheDayPage() {
   const [checklists, setChecklists] = React.useState<ShiftChecklist[]>(initialShiftChecklists);
   const [permits, setPermits] = useState<PermitToWork[]>(initialPermits);
   const { toast } = useToast();
-  const [currentDate, setCurrentDate] = useState<Date>(() => new Date("2026-06-11T00:00:00Z")); 
+  const [currentDate, setCurrentDate] = useState<Date>(() => new Date(0));
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -573,4 +573,3 @@ export default function ActivityOfTheDayPage() {
     </div>
   );
 }
-

@@ -3,17 +3,15 @@ import type { MetricCardData, DailyPowerData, RecentActivityItem, PermitToWork, 
 import { Power, AlertTriangle, ListChecks, Droplets, Users, PackageOpen, Zap, Thermometer, Building as BuildingIcon, WifiOff, HardHat, ClipboardCheck } from "lucide-react";
 import { subDays, format as formatDateFns, addDays, isSameDay, getDate, parseISO, startOfDay, endOfDay, isWithinInterval } from 'date-fns';
 
-// This data is now primarily for the dashboard pop-up.
-// The Inventory Management page will use a more comprehensive list from inventory-data.ts,
-// but this list defines items that are *initially* on loan.
+// These records define the items shown as initially on loan.
 export const initialInventoryLoanItems: InventoryItem[] = [
   { 
     id: 'inv001', 
     name: 'Fluke Multimeter 87V', 
     category: "Test Equipment", 
     quantity: 1,
-    status: "Loaned", // Explicitly set status for loaned items
-    loanedTo: 'Marcus Thorne', 
+    status: "Loaned",
+    loanedTo: 'Alex Morgan',
     loanDate: subDays(new Date(), 2).toISOString(), 
     expectedReturnDate: addDays(new Date(), 5).toISOString(), 
     dataAiHint: 'electronic equipment',
@@ -26,7 +24,7 @@ export const initialInventoryLoanItems: InventoryItem[] = [
     category: "Inspection Tools", 
     quantity: 1,
     status: "Loaned",
-    loanedTo: 'Olivia Chen', 
+    loanedTo: 'Jordan Lee',
     loanDate: subDays(new Date(), 1).toISOString(), 
     expectedReturnDate: addDays(new Date(), 1).toISOString(), 
     dataAiHint: 'inspection tool',
@@ -384,4 +382,3 @@ export const getAbnormalUnits = (units: ElectricalUnitDailyData[], thresholdPerc
     return percentageIncrease > thresholdPercentage;
   });
 };
-
