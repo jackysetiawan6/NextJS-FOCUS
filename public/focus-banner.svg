@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="513" viewBox="0 0 1024 513" role="img" aria-labelledby="title desc">
+  <title id="title">FOCUS facility operations dashboard</title>
+  <desc id="desc">A teal and slate banner showing the FOCUS facility operations control system.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1722"/>
+      <stop offset="1" stop-color="#12384a"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#35d39a" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#35d39a" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#8ce8c6" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="1024" height="513" fill="url(#background)"/>
+  <rect width="1024" height="513" fill="url(#grid)"/>
+  <circle cx="820" cy="100" r="330" fill="url(#glow)"/>
+  <path d="M0 430C220 350 326 490 540 402s310-92 484-9v120H0Z" fill="#07131d" fill-opacity=".7"/>
+  <g fill="none" stroke="#35d39a" stroke-linecap="round">
+    <path d="M630 320h270M630 350h190M630 380h235" stroke-width="8" stroke-opacity=".65"/>
+    <path d="M630 320v60M675 300v80M720 330v50M765 285v95M810 315v65M855 275v105M900 300v80" stroke-width="4" stroke-opacity=".35"/>
+  </g>
+  <g transform="translate(90 132)">
+    <rect width="70" height="70" rx="16" fill="#35d39a"/>
+    <path d="M19 25h32v8H27v10h20v8H27v14h-8V25Zm33 0h10v40H52V25Z" fill="#07131d"/>
+  </g>
+  <text x="90" y="278" fill="#f4fbf8" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700" letter-spacing="8">FOCUS</text>
+  <text x="96" y="326" fill="#9fe8cd" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="3">FACILITY OPERATIONS CONTROL</text>
+  <text x="96" y="382" fill="#c3d4d8" font-family="Arial, Helvetica, sans-serif" font-size="18">Monitor systems. Coordinate teams. Turn insight into action.</text>
+  <g fill="#35d39a">
+    <circle cx="96" cy="425" r="5"/>
+    <circle cx="124" cy="425" r="5"/>
+    <circle cx="152" cy="425" r="5"/>
+  </g>
+</svg>
